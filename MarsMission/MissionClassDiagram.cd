@@ -15,6 +15,45 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="MarsMission.Alien">
+    <Position X="5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alien.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.229" />
+  </Class>
+  <Class Name="MarsMission.Boulder">
+    <Position X="6.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Boulder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarsMission.SpiritRover">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAAAAAABAAAgAAAAAAAEBAAAAAAAAACAA=</HashCode>
+      <FileName>SpiritRover.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarsMission.OpportunityRover">
+    <Position X="9.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAAAAAABAAAgAAAAAAAEBAAAAAAAAACAA=</HashCode>
+      <FileName>OpportunityRover.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarsMission.MissionControl">
+    <Position X="5.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAACAAAAAAAIAAAAAAAAAAAAARAAAAAAAAA=</HashCode>
+      <FileName>MissionControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="MarsMission.IPlateau">
     <Position X="2.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
@@ -23,10 +62,17 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="MarsMission.IObstacles">
-    <Position X="5" Y="5" Width="1.5" />
+    <Position X="5.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IObstacles.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarsMission.IRover">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAQAAAIAAgAIQgAAAAAAAAA=</HashCode>
+      <FileName>IRover.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="MarsMission.Directions">
