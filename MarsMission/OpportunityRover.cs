@@ -7,9 +7,9 @@ namespace MarsMission
 {
     public class OpportunityRover : IRover
     {
-        int IRover.Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IRover.CurrentPosition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IRover.FinalPosition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        string IRover.Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        Position IRover.CurrentPosition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        Position IRover.FinalPosition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         void IRover.CheckForObstacles()
         {

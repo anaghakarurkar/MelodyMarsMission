@@ -7,9 +7,9 @@ namespace MarsMission
 {
     public interface IRover
     {
-        int Name { get; set; }
-        int CurrentPosition { get; set; }
-        int FinalPosition { get; set; }
+        string Name { get; set; }
+        Position CurrentPosition { get; set; }
+        Position FinalPosition { get; set; }
 
         void Move(string instructions);
         void MoveLeft(string info);
