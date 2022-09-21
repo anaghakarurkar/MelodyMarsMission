@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace MarsMission
 {
     public class MissionControl
     {
-        public System.Collections.Generic.List<IRover> RoversInPlateau
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public List<IRover> RoversInPlateau { get; set; }
+        
 
+        public MissionControl()
+        {
+            RoversInPlateau = new List<IRover>();
+            
+            RoversInPlateau.Add(new SpiritRover(0,0,""));
+        }
         public bool LandRoverOnLocation(Position position, Directions direction) 
         {
             throw new System.NotImplementedException();
@@ -31,6 +33,11 @@ namespace MarsMission
         }
 
         public bool SendMessageToRover(IRover rover, string message)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetPlateauGrid()
         {
             throw new System.NotImplementedException();
         }

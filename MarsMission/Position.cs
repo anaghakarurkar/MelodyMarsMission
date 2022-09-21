@@ -7,20 +7,19 @@ namespace MarsMission
 {
     public class Position
     {
-        public int X
+        public int X { get; set; }
+
+
+        public int Y { get; set; }
+
+        public Position() : this(0, 0) { }
+
+        public Position(int x, int y)
         {
-            get => default;
-            set
-            {
-            }
+            // initialise position co-ordinates
+            X = x;
+            Y = y;
         }
 
-        public int Y
-        {
-            get => default;
-            set
-            {
-            }
-        }
     }
 }

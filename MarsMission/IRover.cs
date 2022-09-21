@@ -10,6 +10,7 @@ namespace MarsMission
         string Name { get; set; }
         Position CurrentPosition { get; set; }
         Position FinalPosition { get; set; }
+        string PathString { get; set; }
 
         void Move(string instructions);
         void MoveLeft(string info);

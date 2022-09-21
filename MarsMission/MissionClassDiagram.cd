@@ -7,11 +7,11 @@
       <FileName>Position.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MarsMission.RectPlateau">
+  <Class Name="MarsMission.Plateau">
     <Position X="2.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAABAAAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAA=</HashCode>
-      <FileName>RectPlateau.cs</FileName>
+      <FileName>Plateau.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -34,7 +34,7 @@
   <Class Name="MarsMission.SpiritRover">
     <Position X="7.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAQAAAAAAABAAAgAAAAAAAEBAAAAAAAAACAA=</HashCode>
+      <HashCode>BAAAABAAAIAAAAAAAAAAAAQAAAIAAgAIQgAAAAAAAAA=</HashCode>
       <FileName>SpiritRover.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -42,7 +42,7 @@
   <Class Name="MarsMission.OpportunityRover">
     <Position X="9.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAQAAAAAAABAAAgAAAAAAAEBAAAAAAAAACAA=</HashCode>
+      <HashCode>BAAAABAAAQAAAAAAAAAAAgQAAAIAAgAAAAAAAAAACAA=</HashCode>
       <FileName>OpportunityRover.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -50,7 +50,7 @@
   <Class Name="MarsMission.MissionControl">
     <Position X="5.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAACAAAAAAAIAAAAAAAAAAAAARAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAACAAAAAAAIAAAAAAABAAAAARAAAAAAAAA=</HashCode>
       <FileName>MissionControl.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -71,7 +71,7 @@
   <Interface Name="MarsMission.IRover">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAAAAAAAQAAAIAAgAIQgAAAAAAAAA=</HashCode>
+      <HashCode>BAAAAAAAAIAAAAAAAAAAAAQAAAIAAgAIQgAAAAAAAAA=</HashCode>
       <FileName>IRover.cs</FileName>
     </TypeIdentifier>
   </Interface>

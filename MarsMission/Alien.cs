@@ -7,13 +7,12 @@ namespace MarsMission
 {
     public class Alien : IObstacles
     {
-        public string Name { get; set; }
-        public Position CurrentPostion { get; set; }
-        public Alien()
+         public string Name { get;  set; }
+        public Position CurrentPostion { get;  set; }
+        public Alien(string name, Position currentPostion)
         {
-            throw new System.NotImplementedException();
+            Name = name;
+            CurrentPostion = currentPostion;
         }
-
-
     }
 }

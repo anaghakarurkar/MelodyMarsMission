@@ -7,27 +7,42 @@ namespace MarsMission
 {
     public class SpiritRover : IRover
     {
-        string IRover.Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        Position IRover.CurrentPosition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        Position IRover.FinalPosition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Name { get; set; }
+        public Position CurrentPosition { get; set; }
+        public Position FinalPosition { get; set; }
+        public string PathString { get ; set ; }
 
-        void IRover.CheckForObstacles()
+        public SpiritRover(): this(0, 0) { }
+        
+        public SpiritRover(int x, int y,  string pathStr = "Spirit")
         {
-            throw new NotImplementedException();
+            Name = "Sprit";
+            CurrentPosition = new(x, y);
+            FinalPosition = new();
+            PathString = pathStr;
+        }
+        public void CheckForObstacles()
+        {
+
         }
 
-   
+
+        public string Move()
+        {
+            return "";
+        }
+
+        public void MoveLeft(string info)
+        {
+
+        }
+
+        public void MoveRight(string info)
+        {
+
+        }
+
         void IRover.Move(string instructions)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IRover.MoveLeft(string info)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IRover.MoveRight(string info)
         {
             throw new NotImplementedException();
         }

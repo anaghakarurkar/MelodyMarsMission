@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MarsMission
 {
-    public class RectPlateau : IPlateau
+    public class Plateau : IPlateau
     {
-                        public RectPlateau()
+        public Plateau()
         {
             throw new System.NotImplementedException();
         }
@@ -17,6 +17,5 @@ namespace MarsMission
         Directions IPlateau.CurrentPosition { get; set; }
         List<IObstacles> IPlateau.ObstaclesList { get; set; }
 
-       
     }
 }

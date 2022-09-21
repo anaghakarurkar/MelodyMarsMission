@@ -10,6 +10,6 @@ namespace MarsMission
         Position Grid { get; set; }
         Position StartCoordinates { get; set; }
         Directions CurrentPosition { get; set; }
-        System.Collections.Generic.List<IObstacles> ObstaclesList { get; set; }
+        List<IObstacles> ObstaclesList { get; set; }
     }
 }
