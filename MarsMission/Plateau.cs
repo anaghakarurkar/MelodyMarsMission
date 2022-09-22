@@ -7,15 +7,21 @@ namespace MarsMission
 {
     public class Plateau : IPlateau
     {
-        public Plateau()
-        {
-            throw new System.NotImplementedException();
-        }
+        
+        public Position StartCoordinates { get; set; }
+        public Directions CurrentDirection { get; set; }
+        public Position MacCoordinates { get; set; }
+        public List<IObstacles> ObstaclesList { get; set; }
+        public Position[][] Grid { get; set; }
 
-        Position IPlateau.Grid { get; set; }
-        Position IPlateau.StartCoordinates { get; set; }
-        Directions IPlateau.CurrentPosition { get; set; }
-        List<IObstacles> IPlateau.ObstaclesList { get; set; }
+        public Plateau(Position maxPosition)
+        {
+            Grid = new Position[maxPosition.X][];
+            CurrentDirection = Directions.N;
+            StartCoordinates = new Position(0, 0);
+            MacCoordinates = maxPosition;
+            ObstaclesList = new List<IObstacles>();
+        }
 
     }
 }

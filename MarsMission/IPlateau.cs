@@ -7,9 +7,10 @@ namespace MarsMission
 {
     public interface IPlateau
     {
-        Position Grid { get; set; }
+        MarsMission.Position[][] Grid { get; set; }
         Position StartCoordinates { get; set; }
-        Directions CurrentPosition { get; set; }
+        Directions CurrentDirection { get; set; }
         List<IObstacles> ObstaclesList { get; set; }
+        Position MacCoordinates { get; set; }
     }
 }

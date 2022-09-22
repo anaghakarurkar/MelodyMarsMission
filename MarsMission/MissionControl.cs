@@ -9,13 +9,13 @@ namespace MarsMission
     public class MissionControl
     {
         public List<IRover> RoversInPlateau { get; set; }
+
+        public Plateau ChosenPlateau { get; set; }
         
 
         public MissionControl()
         {
             RoversInPlateau = new List<IRover>();
-            
-            RoversInPlateau.Add(new SpiritRover(0,0,""));
         }
         public bool LandRoverOnLocation(Position position, Directions direction) 
         {
