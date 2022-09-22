@@ -11,6 +11,6 @@ namespace MarsMission
         Position StartCoordinates { get; set; }
         Directions CurrentDirection { get; set; }
         List<IObstacles> ObstaclesList { get; set; }
-        Position MacCoordinates { get; set; }
+        Position MaxCoordinates { get; set; }
     }
 }

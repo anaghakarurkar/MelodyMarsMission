@@ -10,7 +10,7 @@ namespace MarsMission
         
         public Position StartCoordinates { get; set; }
         public Directions CurrentDirection { get; set; }
-        public Position MacCoordinates { get; set; }
+        public Position MaxCoordinates { get;  set; }
         public List<IObstacles> ObstaclesList { get; set; }
         public Position[][] Grid { get; set; }
 
@@ -19,7 +19,7 @@ namespace MarsMission
             Grid = new Position[maxPosition.X][];
             CurrentDirection = Directions.N;
             StartCoordinates = new Position(0, 0);
-            MacCoordinates = maxPosition;
+            MaxCoordinates = maxPosition;
             ObstaclesList = new List<IObstacles>();
         }
 

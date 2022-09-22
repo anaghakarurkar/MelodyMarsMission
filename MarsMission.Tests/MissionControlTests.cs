@@ -8,13 +8,20 @@ public class Tests
     [SetUp]
     public void Setup()
     {
-        missionControl = new MissionControl(new Position(15, 5));
+        missionControl = new MissionControl(new Position(0,0));
     }
 
     [Test]
     public void CheckForMaxGridCoordinates()
     {
-        missionControl.ChosenPlateau.MacCoordinates.X.Should().BeInRange(1, 5);
-        missionControl.ChosenPlateau.MacCoordinates.Y.Should().BeInRange(1, 5);
+        Position maxCoordinates = missionControl.ChosenPlateau.MaxCoordinates;
+        maxCoordinates.X.Should().BeInRange(1, 5);
+        maxCoordinates.Y.Should().BeInRange(1, 5);
+    }
+    [Test]
+    public void IfGridMaxSizeIsNullSetItToDefaultValue()
+    {
+        Position maxCoordinates = missionControl.ChosenPlateau.MaxCoordinates;
+        maxCoordinates.Equals(null).Should().BeFalse();
     }
 }
