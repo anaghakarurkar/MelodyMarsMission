@@ -8,7 +8,7 @@ public class Tests
     [SetUp]
     public void Setup()
     {
-        missionControl = new MissionControl(new Position(5,5));
+        missionControl = new MissionControl(new Position(5, 5));
     }
 
     [Test]

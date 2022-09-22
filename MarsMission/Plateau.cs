@@ -7,10 +7,10 @@ namespace MarsMission
 {
     public class Plateau : IPlateau
     {
-        
+
         public Position StartCoordinates { get; set; }
         public Directions CurrentDirection { get; set; }
-        public Position MaxCoordinates { get;  set; }
+        public Position MaxCoordinates { get; set; }
         public List<IObstacles> ObstaclesList { get; set; }
         public Position[][] Grid { get; set; }
 

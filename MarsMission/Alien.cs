@@ -7,8 +7,8 @@ namespace MarsMission
 {
     public class Alien : IObstacles
     {
-         public string Name { get;  set; }
-        public Position CurrentPostion { get;  set; }
+        public string Name { get; set; }
+        public Position CurrentPostion { get; set; }
         public Alien(string name, Position currentPostion)
         {
             Name = name;
