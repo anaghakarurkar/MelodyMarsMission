@@ -13,9 +13,11 @@ namespace MarsMission
         public Plateau ChosenPlateau { get; set; }
         
 
-        public MissionControl()
+        public MissionControl(Position maxGridSize)
         {
             RoversInPlateau = new List<IRover>();
+            RoversInPlateau.Add(new SpiritRover());
+            ChosenPlateau = new Plateau(maxGridSize);
         }
         public bool LandRoverOnLocation(Position position, Directions direction) 
         {
