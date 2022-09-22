@@ -5,22 +5,31 @@ using System.Text;
 
 namespace MarsMission
 {
-    public class SpiritRover : IRover
+    public class MarsRover : IRover
     {
-        public string Name { get; set; }
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+        }
         public Position CurrentPosition { get; set; }
         public Position FinalPosition { get; set; }
-        public string PathString { get ; set ; }
+        public string PathString { get; set; }
+        public bool IsLandedOnPlateau { get; set; }
+        public Directions CurrentDirection { get; set; }
 
-        public SpiritRover(): this(0, 0) { }
-        
-        public SpiritRover(int x, int y,  string pathStr = "Spirit")
+        public MarsRover(string name)
         {
-            Name = "Sprit";
-            CurrentPosition = new(x, y);
+            _name = name;
+            CurrentPosition = new();
             FinalPosition = new();
-            PathString = pathStr;
+            PathString = "";
         }
+
+
         public void CheckForObstacles()
         {
 

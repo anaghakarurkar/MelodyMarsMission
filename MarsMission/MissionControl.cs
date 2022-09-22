@@ -10,14 +10,15 @@ namespace MarsMission
     {
         public List<IRover> RoversInPlateau { get; set; }
 
-        public Plateau ChosenPlateau { get; private set; }
+        public IPlateau ChosenPlateau { get; private set; }
 
 
         public MissionControl(Position maxGridSize)
         {
             RoversInPlateau = new List<IRover>
             {
-                new SpiritRover()
+                new MarsRover("Spirit"),
+                new MarsRover("Opportunity")
             };
 
             if (maxGridSize == null || ((maxGridSize.X <= 0 || maxGridSize.X > 5) || (maxGridSize.Y <= 0 || maxGridSize.Y > 5)))
@@ -28,7 +29,13 @@ namespace MarsMission
         }
         public bool LandRoverOnLocation(Position position, Directions direction)
         {
-            return false;
+            if (position.X > ChosenPlateau.MaxCoordinates.X || position.Y > ChosenPlateau.MaxCoordinates.Y)
+                return false;
+            else
+            {
+             
+                return true;
+            }
         }
 
         public bool RemoveRoverFromPlateau(IRover rover)
