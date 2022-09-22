@@ -8,7 +8,7 @@ public class Tests
     [SetUp]
     public void Setup()
     {
-        missionControl = new MissionControl(new Position(0,0));
+        missionControl = new MissionControl(new Position(5,5));
     }
 
     [Test]
@@ -23,5 +23,17 @@ public class Tests
     {
         Position maxCoordinates = missionControl.ChosenPlateau.MaxCoordinates;
         maxCoordinates.Equals(null).Should().BeFalse();
+    }
+
+    [Test]
+    public void RoversInPlateauShouldNotBeNull()
+    {
+        missionControl.RoversInPlateau.Should().NotBeEmpty();
+    }
+
+    [Test]
+    public void TestToPlaceRoverOnPosition()
+    {
+        missionControl.LandRoverOnLocation(new Position(1, 2), Directions.N).Should().Be(true);
     }
 }
