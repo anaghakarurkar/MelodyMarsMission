@@ -31,24 +31,25 @@ namespace MarsMission
                 return false;
             else
             {
-
+                ChosenPlateau.RoversInPlateau?[0].SetLocationAndDirection(position, direction);
                 return true;
             }
         }
 
-        public bool RemoveRoverFromPlateau(IRover rover)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public Position GetCurrentRoverPosition(IRover rover)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool SendMessageToRover(IRover rover, string message)
+        public string SendMessageToRover(IRover rover, string message)
         {
-            throw new System.NotImplementedException();
+            string finalPath = "";
+            if (rover.Name == "Spirit")
+            {
+                finalPath = ChosenPlateau.RoversInPlateau?[0].Move(message);
+            }
+            return finalPath;
         }
 
     }

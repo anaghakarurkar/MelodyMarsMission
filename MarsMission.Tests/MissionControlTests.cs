@@ -34,6 +34,6 @@ public class Tests
     [Test]
     public void TestToPlaceRoverOnPosition()
     {
-        missionControl.LandRoverOnLocation(new Position(1, 2), Directions.N).Should().Be(true);
+        missionControl.LandRoverOnLocation(new Position(1, 2), Directions.N).Should().Be(true, "co-ordinates should be valid.");
     }
 }

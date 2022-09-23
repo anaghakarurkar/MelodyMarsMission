@@ -14,7 +14,8 @@ namespace MarsMission
         bool IsLandedOnPlateau { get; set; }
         Directions CurrentDirection { get; set; }
 
-        void Move(string instructions);
+        /// <returns>string</returns>
+        string Move(string instructions);
         void CheckForObstacles();
         void SetLocationAndDirection(Position position, Directions direction);
     }

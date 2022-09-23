@@ -47,14 +47,15 @@ namespace MarsMission
         }
 
 
-        public void Move(string instructions)
+        public string Move(string instructions)
         {
             throw new NotImplementedException();
         }
 
         public void SetLocationAndDirection(Position position, Directions direction)
         {
-            throw new NotImplementedException();
+            CurrentPosition = position;
+            CurrentDirection = direction;
         }
     }
 }
