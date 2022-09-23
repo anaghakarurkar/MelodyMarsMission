@@ -28,7 +28,7 @@ public class Tests
     [Test]
     public void RoversInPlateauShouldNotBeNull()
     {
-        missionControl.RoversInPlateau.Should().NotBeEmpty();
+        missionControl.ChosenPlateau.RoversInPlateau.Should().NotBeEmpty();
     }
 
     [Test]

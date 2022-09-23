@@ -36,22 +36,23 @@ namespace MarsMission
         }
 
 
-        public string Move()
+        private string Move()
         {
             return "";
         }
 
-        public void MoveLeft(string info)
+        private void Move(Directions direction)
         {
-
+            CurrentDirection = direction;
         }
 
-        public void MoveRight(string info)
-        {
 
+        public void Move(string instructions)
+        {
+            throw new NotImplementedException();
         }
 
-        void IRover.Move(string instructions)
+        public void SetLocationAndDirection(Position position, Directions direction)
         {
             throw new NotImplementedException();
         }

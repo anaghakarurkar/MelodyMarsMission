@@ -15,8 +15,6 @@ namespace MarsMission
         Directions CurrentDirection { get; set; }
 
         void Move(string instructions);
-        void MoveLeft(string info);
-        void MoveRight(string info);
         void CheckForObstacles();
         void SetLocationAndDirection(Position position, Directions direction);
     }

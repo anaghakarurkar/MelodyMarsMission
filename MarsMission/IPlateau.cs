@@ -9,8 +9,8 @@ namespace MarsMission
     {
         MarsMission.Position[][] Grid { get; set; }
         Position StartCoordinates { get; set; }
-        Directions CurrentDirection { get; set; }
         List<IObstacles> ObstaclesList { get; set; }
         Position MaxCoordinates { get; set; }
+        public List<IRover>? RoversInPlateau { get; set; }
     }
 }
