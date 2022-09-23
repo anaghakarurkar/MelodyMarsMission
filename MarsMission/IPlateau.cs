@@ -6,11 +6,11 @@ using System.Text;
 namespace MarsMission
 {
     public interface IPlateau
-    {
-        MarsMission.Position[][] Grid { get; set; }
-        Position StartCoordinates { get; set; }
+    { 
+        Position StartCoordinates { get;}
+        Position MaxCoordinates { get;}
         List<IObstacles> ObstaclesList { get; set; }
-        Position MaxCoordinates { get; set; }
+    
         public List<IRover>? RoversInPlateau { get; set; }
     }
 }

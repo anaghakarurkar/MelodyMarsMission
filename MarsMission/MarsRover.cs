@@ -5,34 +5,26 @@ using System.Text;
 
 namespace MarsMission
 {
-    public class MarsRover : IRover
+    internal class MarsRover : IRover
     {
-        private string _name;
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-        }
-        public Position CurrentPosition { get; set; }
-        public Position FinalPosition { get; set; }
-        public string PathString { get; set; }
+        public string Name { get; private set; }
+        public Position CurrentPosition { get; private set; }
+        public Position FinalPosition { get; private set; }
+        public string PathString { get; private set; }
         public bool IsLandedOnPlateau { get; set; }
         public Directions CurrentDirection { get; set; }
 
         public MarsRover(string name)
         {
-            _name = name;
+            Name = name;
             CurrentPosition = new();
             FinalPosition = new();
             PathString = "";
         }
 
-
         public void CheckForObstacles()
         {
-
+            
         }
 
 
@@ -46,12 +38,23 @@ namespace MarsMission
             CurrentDirection = direction;
         }
 
-
+        /// <summary>
+        /// Moves rover according to instructions provided.
+        /// It returns final co-ordinates with its direction.
+        /// In case of Obstacle, it returns error message
+        /// </summary>
+        /// <param name="instructions"></param>
+        /// <returns>string</returns>
         public string Move(string instructions)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Sets rover on plateau using co-ordinates provided and direction.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="direction"></param>
         public void SetLocationAndDirection(Position position, Directions direction)
         {
             CurrentPosition = position;

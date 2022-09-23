@@ -1,66 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="MarsMission.Position">
-    <Position X="2.25" Y="0.5" Width="1.25" />
+    <Position X="10.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
       <FileName>Position.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MarsMission.Plateau">
-    <Position X="4" Y="3.25" Width="1.5" />
+  <Class Name="MarsMission.Plateau" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="4" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAACAAAAAAAAAAAQAAAAAQABIAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQABIAAAAAA=</HashCode>
       <FileName>Plateau.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="MarsMission.Alien">
-    <Position X="6.25" Y="5.75" Width="1.5" />
+  <Class Name="MarsMission.Alien" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="4" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Alien.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.229" />
+    <Lollipop Position="0.252" Collapsed="true" />
   </Class>
-  <Class Name="MarsMission.MarsRover">
-    <Position X="8.25" Y="4" Width="1.5" />
+  <Class Name="MarsMission.MarsRover" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="4" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>BAAAIBAAAIAAAAACAAAAAAQAAAIAAgAIQgAAAAAAAAA=</HashCode>
+      <HashCode>BAAAIAAAAIAAAAACAAAAAAQAAAIAAgAAAgAAAAAAABA=</HashCode>
       <FileName>MarsRover.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="MarsMission.MissionControl">
-    <Position X="5.75" Y="0.5" Width="2.25" />
+    <Position X="10.5" Y="4" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAACAAAAAAAIAAACAAABAAAAABAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAACAAAAAAAAAAACAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>MissionControl.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="MarsMission.IPlateau">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="1.75" Y="0.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAACAAAAAAAAAAAQAAAAAQABIAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQABIAAAAAA=</HashCode>
       <FileName>IPlateau.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MarsMission.IObstacles">
-    <Position X="6.25" Y="4" Width="1.5" />
+    <Position X="7.75" Y="0.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IObstacles.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MarsMission.IRover">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Position X="4.75" Y="0.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>BAAAAAAAAIAAAAACAAAAAAQAAAIAAgAIQgAAAAAAABA=</HashCode>
+      <HashCode>BAAAAAAAAIAAAAACAAAAAAQAAAIAAgAAAgAAAAAAABA=</HashCode>
       <FileName>IRover.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="MarsMission.Directions">
-    <Position X="2.25" Y="2.5" Width="1.25" />
+    <Position X="10.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhCIAAA=</HashCode>
       <FileName>Directions.cs</FileName>

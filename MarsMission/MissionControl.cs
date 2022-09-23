@@ -9,7 +9,6 @@ namespace MarsMission
     public class MissionControl
     {
         public IPlateau ChosenPlateau { get; private set; }
-
         public MissionControl(Position maxGridSize)
         {
             if (maxGridSize == null || ((maxGridSize.X <= 0 || maxGridSize.X > 5) || (maxGridSize.Y <= 0 || maxGridSize.Y > 5)))
@@ -20,8 +19,8 @@ namespace MarsMission
             {
                 RoversInPlateau = new List<IRover>
                 {
-                new MarsRover("Spirit"),
-                new MarsRover("Opportunity")
+                new MarsRover("spirit"),
+                new MarsRover("opportunity")
                 }
             };
         }
@@ -42,10 +41,16 @@ namespace MarsMission
             throw new System.NotImplementedException();
         }
 
-        public string SendMessageToRover(IRover rover, string message)
+        public string SendMessageToRover(string name, string message)
         {
             string finalPath = "";
-            if (rover.Name == "Spirit")
+            name = name.ToLower();
+
+            if (String.IsNullOrEmpty(name))
+            {
+                return name + " rover does not exist";
+            }
+            if (name == "spirit")
             {
                 finalPath = ChosenPlateau.RoversInPlateau?[0].Move(message);
             }

@@ -2,7 +2,8 @@ using FluentAssertions;
 
 namespace MarsMission.Tests;
 
-public class Tests
+[TestFixture]
+public class MissionControlTests
 {
     MissionControl missionControl;
     [SetUp]
@@ -12,6 +13,7 @@ public class Tests
     }
 
     [Test]
+    
     public void CheckForMaxGridCoordinates()
     {
         Position maxCoordinates = missionControl.ChosenPlateau.MaxCoordinates;
