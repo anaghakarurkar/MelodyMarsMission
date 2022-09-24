@@ -42,11 +42,11 @@ public class MissionControlTests
         Assert.That(ex.Message, Is.EqualTo($"{errorMessage} Rover name does not exist."));
     }
 
-    [TestCase(-1, 6)]
-    public void IncorrectRoverPositionThrowsException(int x, int y)
+    [Test]
+    public void IncorrectRoverPositionThrowsException()
     {
         string errorMessage = "Rover landing cancelled:";
-        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(x, y), Directions.N));
+        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(-1, -6), Directions.N));
         Assert.That(ex.Message, Is.EqualTo($"{errorMessage} Invalid Co-ordinates."));
     }
 
@@ -55,15 +55,15 @@ public class MissionControlTests
     {
         string errorMessage = "Rover landing cancelled:";
         _missionControl.LandRoverOnLocation("opportunity", new Position(x, y), Directions.N);
-        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(1, 5), Directions.N));
+        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(x, y), Directions.N));
         Assert.That(ex.Message, Is.EqualTo($"{errorMessage} Obstacle found."));
     }
 
-    [TestCase(3, 3)]
-    public void AlienObstacleFoundShouldThrowException(int x, int y)
+    [Test]
+    public void AlienObstacleFoundShouldThrowException()
     {
         string errorMessage = "Rover landing cancelled:";
-        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(3, 3), Directions.N));
+        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(1, 1), Directions.N));
         Assert.That(ex.Message, Is.EqualTo($"{errorMessage} Obstacle found."));
     }
 
@@ -94,5 +94,17 @@ public class MissionControlTests
     {
         bool result = _missionControl.CheckForMessageValidity(message);
         Assert.That(result, Is.EqualTo(true));
+    }
+
+    [Test]
+    public void RoverShouldReturnCorrectDestinationString()
+    {
+        string roverName = "spirit";
+        _missionControl = new(new Position(5,5));
+        _missionControl.LandRoverOnLocation(roverName, new Position(1,2), Directions.N);
+        _missionControl.ChosenPlateau.RoversInPlateau[roverName].IsLandedOnPlateau.Should().BeTrue();
+       string result =  _missionControl.SendMessageToRover(roverName, "LMLMLMLMM");
+        result.Should().Be("1 3 N");
+
     }
 }

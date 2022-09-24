@@ -33,7 +33,7 @@ namespace MarsMission
             ObstaclesList = new List<IObstacles>
             {
                 { //new Obstacle(alien, new Position(random.Next(0, maxPosition.X),random.Next(0, maxPosition.Y)))
-                  new Obstacle(alien, new Position(3,3))
+                  new Obstacle(alien, new Position(1,1))
                 }
              };
         }

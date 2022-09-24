@@ -34,14 +34,6 @@ namespace MarsMission
 
         }
 
-
-
-        public Position GetCurrentRoverPosition(IRover rover)
-        {
-            throw new System.NotImplementedException();
-        }
-
-      
         public bool CheckRoverPositionValidity(Position position)
         {
             int maxX = ChosenPlateau.MaxCoordinates.X;
@@ -87,7 +79,7 @@ namespace MarsMission
             string finalPath;
             if (CheckRoverExists(name) == false)
                 return name + " rover does not exist";
-            if (CheckForMessageValidity(message))
+            if (CheckForMessageValidity(message) == false)
                 return message + " is invalid message";
 
             finalPath = ChosenPlateau.RoversInPlateau[name].Move(message);
