@@ -7,7 +7,6 @@ namespace MarsMission
 {
     public interface IRover
     {
-        string Name { get; }
         Position CurrentPosition { get; }
         Position FinalPosition { get; }
         string PathString { get; }

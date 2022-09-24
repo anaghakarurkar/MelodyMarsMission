@@ -7,16 +7,14 @@ namespace MarsMission
 {
     internal class MarsRover : IRover
     {
-        public string Name { get; private set; }
         public Position CurrentPosition { get; private set; }
         public Position FinalPosition { get; private set; }
         public string PathString { get; private set; }
         public bool IsLandedOnPlateau { get; set; }
         public Directions CurrentDirection { get; set; }
 
-        public MarsRover(string name)
+        public MarsRover()
         {
-            Name = name;
             CurrentPosition = new();
             FinalPosition = new();
             PathString = "";
@@ -24,7 +22,7 @@ namespace MarsMission
 
         public void CheckForObstacles()
         {
-            
+
         }
 
 

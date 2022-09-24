@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Text.RegularExpressions;
 
 namespace MarsMission
 {
@@ -15,45 +15,59 @@ namespace MarsMission
             {
                 maxGridSize = new Position(5, 5);
             }
-            ChosenPlateau = new Plateau(maxGridSize)
-            {
-                RoversInPlateau = new List<IRover>
-                {
-                new MarsRover("spirit"),
-                new MarsRover("opportunity")
-                }
-            };
+            ChosenPlateau = new Plateau(maxGridSize);
         }
-        public bool LandRoverOnLocation(Position position, Directions direction)
+        public bool LandRoverOnLocation(string name, Position position, Directions direction)
         {
             if (position.X > ChosenPlateau.MaxCoordinates.X || position.Y > ChosenPlateau.MaxCoordinates.Y)
                 return false;
-            else
-            {
-                ChosenPlateau.RoversInPlateau?[0].SetLocationAndDirection(position, direction);
-                return true;
-            }
-        }
 
+            if (CheckRoverExists(name))
+            {
+                //add more checks if another rover is already there on that location
+                //throw specific exceptions
+                // check if location has alien then return flase
+                //then error will be can not set rover in specified position
+                ChosenPlateau.RoversInPlateau[name].SetLocationAndDirection(position, direction);
+            }
+            return true;
+
+        }
 
         public Position GetCurrentRoverPosition(IRover rover)
         {
             throw new System.NotImplementedException();
         }
 
+        private bool CheckRoverExists(string name)
+        {
+            bool result = false;
+            if (!String.IsNullOrEmpty(name))
+            {
+                result = ChosenPlateau.RoversInPlateau.ContainsKey(name.ToLower());
+            }
+
+            return result;
+        }
+        private static bool CheckForMessageValidity(string message)
+        {
+            bool result = false;
+            Regex regex = new("^[LMR]$");
+
+            if (!String.IsNullOrEmpty(message) && regex.IsMatch(message))
+                result = true;
+
+            return result;
+        }
         public string SendMessageToRover(string name, string message)
         {
-            string finalPath = "";
-            name = name.ToLower();
-
-            if (String.IsNullOrEmpty(name))
-            {
+            string finalPath;
+            if (CheckRoverExists(name) == false)
                 return name + " rover does not exist";
-            }
-            if (name == "spirit")
-            {
-                finalPath = ChosenPlateau.RoversInPlateau?[0].Move(message);
-            }
+            if (CheckForMessageValidity(message))
+                return message + " is invalid message";
+
+            finalPath = ChosenPlateau.RoversInPlateau[name].Move(message);
             return finalPath;
         }
 

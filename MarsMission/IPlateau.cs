@@ -8,9 +8,9 @@ namespace MarsMission
     public interface IPlateau
     { 
         Position StartCoordinates { get;}
-        Position MaxCoordinates { get;}
-        List<IObstacles> ObstaclesList { get; set; }
+        Position MaxCoordinates { get;  }
+        List<IObstacles> ObstaclesList { get; }
     
-        public List<IRover>? RoversInPlateau { get; set; }
+        public Dictionary<string, IRover> RoversInPlateau { get; }
     }
 }

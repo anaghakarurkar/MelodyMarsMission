@@ -9,14 +9,28 @@ namespace MarsMission
     {
         public Position StartCoordinates { get; private set; }
         public Position MaxCoordinates { get; private set; }
-        public List<IRover>? RoversInPlateau { get; set; }
-        public List<IObstacles> ObstaclesList { get; set; }
+        public Dictionary<string, IRover> RoversInPlateau { get; private set; }
+        public List<IObstacles> ObstaclesList { get; private set; }
 
         public Plateau(Position maxPosition)
         {
+            Random random = new Random();    
             StartCoordinates = new Position(0, 0);
             MaxCoordinates = maxPosition;
             ObstaclesList = new List<IObstacles>();
+           
+            //Creating two rovers and adding them in Plateau
+            RoversInPlateau = new Dictionary<string, IRover>
+                {
+                    {"spirit",  new MarsRover() },
+                    {"opportunity", new MarsRover()}
+                };
+            
+            //Adding Obstacle at random position in grid
+            ObstaclesList = new List<IObstacles>
+            {
+                { new Obstacle("Alien", new Position(random.Next(0, maxPosition.X),random.Next(0, maxPosition.Y))) }
+            };
         }
 
     }
