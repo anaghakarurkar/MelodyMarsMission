@@ -10,7 +10,7 @@ namespace MarsMission
         Position CurrentPosition { get; }
         Position FinalPosition { get; }
         string PathString { get; }
-        bool IsLandedOnPlateau { get; set; }
+        bool IsLandedOnPlateau { get; }
         Directions CurrentDirection { get; set; }
 
         string Move(string instructions);

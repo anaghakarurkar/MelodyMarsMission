@@ -10,7 +10,7 @@ namespace MarsMission
         public Position CurrentPosition { get; private set; }
         public Position FinalPosition { get; private set; }
         public string PathString { get; private set; }
-        public bool IsLandedOnPlateau { get; set; }
+        public bool IsLandedOnPlateau { get; private set; }
         public Directions CurrentDirection { get; set; }
 
         public MarsRover()
@@ -57,6 +57,7 @@ namespace MarsMission
         {
             CurrentPosition = position;
             CurrentDirection = direction;
+            IsLandedOnPlateau = true;
         }
     }
 }

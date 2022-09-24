@@ -21,16 +21,17 @@ namespace MarsMission
         public void LandRoverOnLocation(string name, Position position, Directions direction)
         {
 
-            if (CheckRoverPositionValidity(position) == false)
-              throw new RoverLandingException("Invalid Co-ordinates.");
-
             if (CheckRoverExists(name) == false)
-              throw new RoverLandingException("Rover name does not exist.");
+                throw new RoverLandingException("Rover name does not exist.");
 
-            if (CheckForObstacles(position) == false)
-              throw new RoverLandingException("Obstacle found.");
-               
-               ChosenPlateau.RoversInPlateau[name].SetLocationAndDirection(position, direction);
+            if (CheckRoverPositionValidity(position) == false)
+                throw new RoverLandingException("Invalid Co-ordinates.");
+
+            if (CheckForObstacles(position) == true)
+                throw new RoverLandingException("Obstacle found.");
+
+            ChosenPlateau.RoversInPlateau[name].SetLocationAndDirection(position, direction);
+
         }
 
 
@@ -43,25 +44,23 @@ namespace MarsMission
       
         public bool CheckRoverPositionValidity(Position position)
         {
-            return ((position == null) || (position.X > ChosenPlateau.MaxCoordinates.X || position.Y > ChosenPlateau.MaxCoordinates.Y));   
+            int maxX = ChosenPlateau.MaxCoordinates.X;
+            int maxY = ChosenPlateau.MaxCoordinates.Y;
+            return (position != null && ((position.X <= maxX && position.X >=0) && (position.Y <= maxY && position.Y >= 0)));   
         }
 
         public bool CheckForObstacles(Position position)
         {
-            //check if another rover 
-            //or other obstacle is already at this position
-            return ChosenPlateau.RoversInPlateau.Where(rover => (rover.Value.CurrentPosition.X == position.X) && (rover.Value.CurrentPosition.Y == position.Y)).Any() ||
-                   ChosenPlateau.ObstaclesList.Where(obstacle => (obstacle.CurrentPosition.X == position.X) && (obstacle.CurrentPosition.Y == position.Y)).Any();
-            //var isRoverFound = (from c in ChosenPlateau.RoversInPlateau
-            //             where (c.Value.CurrentPosition.X == position.X) && (c.Value.CurrentPosition.Y == position.Y)
-            //             select c).Any();
-            
-           
-            //var isObstacleFound = (from obstacle in ChosenPlateau.ObstaclesList
-            //                where(obstacle.CurrentPosition.X == position.X) && (obstacle.CurrentPosition.Y == position.Y)
-            //                select obstacle).Any();
-            
-            //return isRoverFound || isObstacleFound;
+            var isRoverFound = (from c in ChosenPlateau.RoversInPlateau
+                                where (c.Value.CurrentPosition.X == position.X) && (c.Value.CurrentPosition.Y == position.Y)
+                                select c).Any();
+         
+
+            var isObstacleFound = (from obstacle in ChosenPlateau.ObstaclesList
+                                   where (obstacle.CurrentPosition.X == position.X) && (obstacle.CurrentPosition.Y == position.Y)
+                                   select obstacle).Any();
+
+            return isRoverFound || isObstacleFound;
         }
         public bool CheckRoverExists(string name)
         {

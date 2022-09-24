@@ -6,6 +6,7 @@ namespace MarsMission.Tests;
 public class MissionControlTests
 {
     private MissionControl _missionControl;
+
     [SetUp]
     public void Setup()
     {
@@ -33,16 +34,45 @@ public class MissionControlTests
         _missionControl.ChosenPlateau.RoversInPlateau.Should().NotBeEmpty();
     }
 
-    [Test]
-    public void CheckForAnyLandingProblems()
+    [TestCase("sprit1")]
+    public void IncorrectRoverNameThrowsException(string name)
     {
-        string roverName = "spirit";
         string errorMessage = "Rover landing cancelled:";
-        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation(roverName, new Position(1, 2), Directions.N));
-        Assert.That(ex.Message, Is.AnyOf($"{errorMessage} Invalid Co-ordinates."), $"{errorMessage} Rover name does not exist.", $"{errorMessage} Obstacle found.");
+        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation(name, new Position(1, 2), Directions.N));
+        Assert.That(ex.Message, Is.EqualTo($"{errorMessage} Rover name does not exist."));
     }
-    
 
+    [TestCase(-1, 6)]
+    public void IncorrectRoverPositionThrowsException(int x, int y)
+    {
+        string errorMessage = "Rover landing cancelled:";
+        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(x, y), Directions.N));
+        Assert.That(ex.Message, Is.EqualTo($"{errorMessage} Invalid Co-ordinates."));
+    }
+
+    [TestCase(1, 5)]
+    public void RoverObstacleFoundShouldThrowException(int x, int y)
+    {
+        string errorMessage = "Rover landing cancelled:";
+        _missionControl.LandRoverOnLocation("opportunity", new Position(x, y), Directions.N);
+        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(1, 5), Directions.N));
+        Assert.That(ex.Message, Is.EqualTo($"{errorMessage} Obstacle found."));
+    }
+
+    [TestCase(3, 3)]
+    public void AlienObstacleFoundShouldThrowException(int x, int y)
+    {
+        string errorMessage = "Rover landing cancelled:";
+        var ex = Assert.Throws<RoverLandingException>(() => _missionControl.LandRoverOnLocation("spirit", new Position(3, 3), Directions.N));
+        Assert.That(ex.Message, Is.EqualTo($"{errorMessage} Obstacle found."));
+    }
+
+    [Test]
+    public void RoverLandedInPlateauSuccessfully()
+    {
+        _missionControl.LandRoverOnLocation("spirit", new Position(2, 2), Directions.N);
+        _missionControl.ChosenPlateau.RoversInPlateau["spirit"].IsLandedOnPlateau.Should().BeTrue();
+    }
     [TestCase("spirit")]
     [TestCase("opportunity")]
     //[TestCase("something")]
@@ -51,7 +81,7 @@ public class MissionControlTests
     //[TestCase(null)]
     public void CheckIfRoverNameValid(string name)
     {
-       bool result =  _missionControl.CheckRoverExists(name);
+        bool result = _missionControl.CheckRoverExists(name);
         Assert.That(result, Is.EqualTo(true));
 
     }
