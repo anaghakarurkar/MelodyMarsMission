@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using MarsMission.Exceptions;
 
 namespace MarsMission
 {
@@ -17,29 +18,52 @@ namespace MarsMission
             }
             ChosenPlateau = new Plateau(maxGridSize);
         }
-        public bool LandRoverOnLocation(string name, Position position, Directions direction)
+        public void LandRoverOnLocation(string name, Position position, Directions direction)
         {
-            if (position.X > ChosenPlateau.MaxCoordinates.X || position.Y > ChosenPlateau.MaxCoordinates.Y)
-                return false;
 
-            if (CheckRoverExists(name))
-            {
-                //add more checks if another rover is already there on that location
-                //throw specific exceptions
-                // check if location has alien then return flase
-                //then error will be can not set rover in specified position
-                ChosenPlateau.RoversInPlateau[name].SetLocationAndDirection(position, direction);
-            }
-            return true;
+            if (CheckRoverPositionValidity(position) == false)
+              throw new RoverLandingException("Invalid Co-ordinates.");
 
+            if (CheckRoverExists(name) == false)
+              throw new RoverLandingException("Rover name does not exist.");
+
+            if (CheckForObstacles(position) == false)
+              throw new RoverLandingException("Obstacle found.");
+               
+               ChosenPlateau.RoversInPlateau[name].SetLocationAndDirection(position, direction);
         }
+
+
 
         public Position GetCurrentRoverPosition(IRover rover)
         {
             throw new System.NotImplementedException();
         }
 
-        private bool CheckRoverExists(string name)
+      
+        public bool CheckRoverPositionValidity(Position position)
+        {
+            return ((position == null) || (position.X > ChosenPlateau.MaxCoordinates.X || position.Y > ChosenPlateau.MaxCoordinates.Y));   
+        }
+
+        public bool CheckForObstacles(Position position)
+        {
+            //check if another rover 
+            //or other obstacle is already at this position
+            return ChosenPlateau.RoversInPlateau.Where(rover => (rover.Value.CurrentPosition.X == position.X) && (rover.Value.CurrentPosition.Y == position.Y)).Any() ||
+                   ChosenPlateau.ObstaclesList.Where(obstacle => (obstacle.CurrentPosition.X == position.X) && (obstacle.CurrentPosition.Y == position.Y)).Any();
+            //var isRoverFound = (from c in ChosenPlateau.RoversInPlateau
+            //             where (c.Value.CurrentPosition.X == position.X) && (c.Value.CurrentPosition.Y == position.Y)
+            //             select c).Any();
+            
+           
+            //var isObstacleFound = (from obstacle in ChosenPlateau.ObstaclesList
+            //                where(obstacle.CurrentPosition.X == position.X) && (obstacle.CurrentPosition.Y == position.Y)
+            //                select obstacle).Any();
+            
+            //return isRoverFound || isObstacleFound;
+        }
+        public bool CheckRoverExists(string name)
         {
             bool result = false;
             if (!String.IsNullOrEmpty(name))
@@ -49,10 +73,10 @@ namespace MarsMission
 
             return result;
         }
-        private static bool CheckForMessageValidity(string message)
+        public bool CheckForMessageValidity(string message)
         {
             bool result = false;
-            Regex regex = new("^[LMR]$");
+            Regex regex = new("^[LMRlrm]*$");
 
             if (!String.IsNullOrEmpty(message) && regex.IsMatch(message))
                 result = true;

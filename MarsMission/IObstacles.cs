@@ -8,6 +8,6 @@ namespace MarsMission
     public interface IObstacles
     {
         string Name { get; set; }
-        Position CurrentPostion { get; set; }
+        Position CurrentPosition{ get; set; }
     }
 }
