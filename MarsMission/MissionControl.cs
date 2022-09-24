@@ -18,7 +18,7 @@ namespace MarsMission
             }
             ChosenPlateau = new Plateau(maxGridSize);
         }
-        public void LandRoverOnLocation(string name, Position position, Directions direction)
+        public void LandRoverOnLocation(string name, Position position, Focus direction)
         {
 
             if (CheckRoverExists(name) == false)

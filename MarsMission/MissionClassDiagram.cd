@@ -10,7 +10,7 @@
   <Class Name="MarsMission.Plateau" BaseTypeListCollapsed="true">
     <Position X="1.75" Y="4" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQABIAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAQAAAAAQABIAAQAQA=</HashCode>
       <FileName>Plateau.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -26,7 +26,7 @@
   <Class Name="MarsMission.MarsRover" BaseTypeListCollapsed="true">
     <Position X="4.75" Y="4" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>BAAAAAAAAIAAAAACAAAAAAAAAAIAAgAAAgAAAAAAABA=</HashCode>
+      <HashCode>BAIAAAAAAIAAAAACAAAAAAAAAAIEAgAAAgAAAAAAABA=</HashCode>
       <FileName>MarsRover.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -34,7 +34,7 @@
   <Class Name="MarsMission.MissionControl">
     <Position X="10.5" Y="4" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAADCAAAAAACAAACAAAAAAAAAhAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAABCAAAAAACAAACAAAAAAAAAhAAAAAAAAA=</HashCode>
       <FileName>MissionControl.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,11 +59,11 @@
       <FileName>IRover.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="MarsMission.Directions">
+  <Enum Name="MarsMission.Focus">
     <Position X="10.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhCIAAA=</HashCode>
-      <FileName>Directions.cs</FileName>
+      <FileName>Focus.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Arial" Size="10" />

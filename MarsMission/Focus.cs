@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MarsMission
 {
-    public enum Directions
+    public enum Focus
     {
         E,
         W,

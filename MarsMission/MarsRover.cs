@@ -11,13 +11,17 @@ namespace MarsMission
         public Position FinalPosition { get; private set; }
         public string PathString { get; private set; }
         public bool IsLandedOnPlateau { get; private set; }
-        public Directions CurrentDirection { get; set; }
+        public Focus CurrentFocus { get; set; }
+
+        private readonly Dictionary<int, int> _rightDirection;
+        private readonly Dictionary<int, int> _leftDirection;
 
         public MarsRover()
         {
             CurrentPosition = new();
             FinalPosition = new();
             PathString = "";
+            
         }
 
         public void CheckForObstacles()
@@ -31,9 +35,9 @@ namespace MarsMission
             return "";
         }
 
-        private void Move(Directions direction)
+        private void Move(Focus direction)
         {
-            CurrentDirection = direction;
+            CurrentFocus = direction;
         }
 
 
@@ -48,10 +52,10 @@ namespace MarsMission
 
 
         // Sets rover on plateau using co-ordinates provided and direction.
-        public void SetLocationAndDirection(Position position, Directions direction)
+        public void SetLocationAndDirection(Position position, Focus direction)
         {
             CurrentPosition = position;
-            CurrentDirection = direction;
+            CurrentFocus = direction;
             IsLandedOnPlateau = true;
         }
     }

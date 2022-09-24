@@ -11,10 +11,10 @@ namespace MarsMission
         Position FinalPosition { get; }
         string PathString { get; }
         bool IsLandedOnPlateau { get; }
-        Directions CurrentDirection { get; set; }
+        Focus CurrentFocus { get; set; }
 
         string Move(string instructions);
         void CheckForObstacles();
-        void SetLocationAndDirection(Position position, Directions direction);
+        void SetLocationAndDirection(Position position, Focus direction);
     }
 }
