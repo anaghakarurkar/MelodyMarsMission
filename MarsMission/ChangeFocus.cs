@@ -5,9 +5,10 @@ using System.Text;
 
 namespace MarsMission
 {
+    //Class to find new direction N, S, E,  W
+    //When rover is asked to turn left or right
     public class ChangeFocus
     {
-
         private readonly Dictionary<Focus, Focus> _leftFocus;
         private readonly Dictionary<Focus, Focus> _rightFocus;
         public ChangeFocus()
@@ -44,8 +45,5 @@ namespace MarsMission
                     return _leftFocus[direction]; ;
             }
         }
-
-        
-        
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace MarsMission
 {
+    //This class is handles plateau 
     public class Plateau : IPlateau
     {
         public Position StartCoordinates { get; private set; }
@@ -17,7 +18,7 @@ namespace MarsMission
         public const string alien = "alien";
         public Plateau(Position maxPosition)
         {
-            Random random = new Random();
+            //Random random = new Random();
             StartCoordinates = new Position(0, 0);
             MaxCoordinates = maxPosition;
             ObstaclesList = new List<IObstacle>();
@@ -32,11 +33,13 @@ namespace MarsMission
             //Adding Obstacle at random position in grid
             ObstaclesList = new List<IObstacle>
             {
-                { //new Obstacle(alien, new Position(random.Next(0, maxPosition.X),random.Next(0, maxPosition.Y)))
-                  new Obstacle(alien, new Position(1,1))
+                {   //Following  commented code can put alien on random co-ordinate on grid if needed
+                    //new Obstacle(alien, new Position(random.Next(0, maxPosition.X),random.Next(0, maxPosition.Y)))
+                  new Obstacle(alien, new Position(4,4))
                 }
              };
         }
+
 
     }
 }

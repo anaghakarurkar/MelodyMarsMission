@@ -15,6 +15,7 @@ namespace MarsMission
         public Focus CurrentFocus { get; set; }
         public ChangeFocus NewDirection { get; }
 
+        private Func<Position, bool>? CheckObstacles;
         public MarsRover()
         {
             CurrentPosition = new();
@@ -23,34 +24,33 @@ namespace MarsMission
             NewDirection = new();
         }
 
-        public void CheckForObstacles()
-        {
-
-        }
-
-
-        private string Move()
-        {
-            return "";
-        }
-
         private Position Move(Focus direction, Position lastPosition, Position maxGridSize)
         {
-            //Check if next location is
-            //1. Obstacle like another rover or alien
-            //2. Check if next move is out of the grid
+            //This function checks two things:
+            //1. While moving if obstacle found in next location, rover does not move there.
+            //2. Rover does not go out of grid while moving
             switch (direction)
             {
                 case Focus.E:
+                    //Check if obstacle found - rover does not move there
+                    if ((CheckObstacles != null) && CheckObstacles(new Position(lastPosition.X + 1, lastPosition.Y)) == true)
+                        return lastPosition;
+                    //If no obstacle found rover moves
                     lastPosition.X = (lastPosition.X != maxGridSize.X) ? lastPosition.X += 1 : lastPosition.X;
                     break;
                 case Focus.W:
+                    if ((CheckObstacles != null) && CheckObstacles(new Position(lastPosition.X - 1, lastPosition.Y)) == true)
+                        return lastPosition;
                     lastPosition.X = (lastPosition.X != 0) ? lastPosition.X -= 1 : lastPosition.X;
                     break;
                 case Focus.N:
+                    if ((CheckObstacles != null) && CheckObstacles(new Position(lastPosition.X, lastPosition.Y + 1)) == true)
+                        return lastPosition;
                     lastPosition.Y = (lastPosition.Y != maxGridSize.Y) ? lastPosition.Y += 1 : lastPosition.Y;
                     break;
                 case Focus.S:
+                    if ((CheckObstacles != null) && CheckObstacles(new Position(lastPosition.X, lastPosition.Y - 1)) == true)
+                        return lastPosition;
                     lastPosition.Y = (lastPosition.Y != 0) ? lastPosition.Y -= 1 : lastPosition.Y;
                     break;
             }
@@ -62,10 +62,12 @@ namespace MarsMission
 
         /* Moves rover according to instructions provided.
         It returns final co-ordinates with its direction.
-        In case of Obstacle, it returns error message*/
-        public string Move(string instructions, Position maxGridSize)
+        In case of Obstacle, it returns invalid co-ordinates. 
+        */
+        public string Move(string instructions, Position maxGridSize, Func<Position, bool> checkObstacleMethodRef)
         {
-            //Add logic to see if 
+            this.CheckObstacles = checkObstacleMethodRef;
+
             foreach (char step in instructions.ToCharArray())
             {
                 switch (step)
@@ -92,5 +94,7 @@ namespace MarsMission
             CurrentFocus = direction;
             IsLandedOnPlateau = true;
         }
+
+
     }
 }
