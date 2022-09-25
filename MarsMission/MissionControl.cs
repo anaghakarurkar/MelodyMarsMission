@@ -64,7 +64,7 @@ namespace MarsMission
 
             return result;
         }
-        public bool CheckForMessageValidity(string message)
+        public static bool CheckForMessageValidity(string message)
         {
             bool result = false;
             Regex regex = new("^[LMRlrm]*$");
@@ -81,7 +81,7 @@ namespace MarsMission
                 return name + " rover does not exist";
             if (CheckForMessageValidity(message) == false)
                 return message + " is invalid message";
-
+            
             finalPath = ChosenPlateau.RoversInPlateau[name].Move(message);
             return finalPath;
         }

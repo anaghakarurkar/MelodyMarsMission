@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MarsMission
 {
-    public class Obstacle : IObstacles
+    public class Obstacle : IObstacle
     {
         public string Name { get; set; }
         public Position CurrentPosition { get; set; }

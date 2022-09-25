@@ -9,7 +9,7 @@ namespace MarsMission
     { 
         Position StartCoordinates { get;}
         Position MaxCoordinates { get;  }
-        List<IObstacles> ObstaclesList { get; }
+        List<IObstacle> ObstaclesList { get; }
         public Dictionary<string, IRover> RoversInPlateau { get; }
     }
 }

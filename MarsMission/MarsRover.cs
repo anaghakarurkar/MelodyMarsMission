@@ -12,16 +12,14 @@ namespace MarsMission
         public string PathString { get; private set; }
         public bool IsLandedOnPlateau { get; private set; }
         public Focus CurrentFocus { get; set; }
-
-        private readonly Dictionary<int, int> _rightDirection;
-        private readonly Dictionary<int, int> _leftDirection;
+        public ChangeFocus NewDirection { get; }
 
         public MarsRover()
         {
             CurrentPosition = new();
             FinalPosition = new();
             PathString = "";
-            
+            NewDirection = new();
         }
 
         public void CheckForObstacles()
@@ -35,9 +33,25 @@ namespace MarsMission
             return "";
         }
 
-        private void Move(Focus direction)
+        private Position Move(Focus direction, Position lastPosition)
         {
-            CurrentFocus = direction;
+            switch(direction)
+            {
+                case Focus.E:
+                    lastPosition.X += 1;
+                    break;
+                case Focus.W:
+                    lastPosition.X -= 1;
+                    break;
+                case Focus.N:
+                    lastPosition.Y += 1;
+                    break;
+                case Focus.S:
+                    lastPosition.Y -= 1;
+                    break;
+            }
+            // return updated position
+            return lastPosition;
         }
 
 
@@ -46,8 +60,23 @@ namespace MarsMission
         In case of Obstacle, it returns error message*/
         public string Move(string instructions)
         {
+            //Add logic to see if 
+            foreach (char step in instructions.ToCharArray())
+            {
+                switch (step)
+                {
+                    case 'L':
+                    case 'R':
+                        CurrentFocus = NewDirection.GetDirection(CurrentFocus, step);
+                        break;
+                    case 'M':
+                        CurrentPosition = Move(CurrentFocus,CurrentPosition);
+                        break;
+                }
 
-            return " df";
+            }
+
+            return $"{CurrentPosition.X} {CurrentPosition.Y} {CurrentFocus.ToString()}";
         }
 
 

@@ -92,19 +92,29 @@ public class MissionControlTests
     //[TestCase(null)]
     public void CheckIfMessageIsInCorrectFormat(string message)
     {
-        bool result = _missionControl.CheckForMessageValidity(message);
+        bool result = MissionControl.CheckForMessageValidity(message);
         Assert.That(result, Is.EqualTo(true));
     }
 
     [Test]
-    public void RoverShouldReturnCorrectDestinationString()
+    public void Rover1ShouldReturnCorrectDestinationString()
     {
         string roverName = "spirit";
-        _missionControl = new(new Position(5,5));
-        _missionControl.LandRoverOnLocation(roverName, new Position(1,2), Focus.N);
+        _missionControl = new(new Position(5, 5));
+        _missionControl.LandRoverOnLocation(roverName, new Position(1, 2), Focus.N);
         _missionControl.ChosenPlateau.RoversInPlateau[roverName].IsLandedOnPlateau.Should().BeTrue();
-       string result =  _missionControl.SendMessageToRover(roverName, "LMLMLMLMM");
+        string result = _missionControl.SendMessageToRover(roverName, "LMLMLMLMM");
         result.Should().Be("1 3 N");
+    }
 
+    [Test]
+    public void Rover2ShouldReturnCorrectDestinationString()
+    {
+        string roverName = "opportunity";
+        _missionControl = new(new Position(5, 5));
+        _missionControl.LandRoverOnLocation(roverName, new Position(3, 3), Focus.E);
+        _missionControl.ChosenPlateau.RoversInPlateau[roverName].IsLandedOnPlateau.Should().BeTrue();
+        string result = _missionControl.SendMessageToRover(roverName, "MMRMMRMRRM");
+        result.Should().Be("5 1 E");
     }
 }

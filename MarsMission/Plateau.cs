@@ -10,7 +10,7 @@ namespace MarsMission
         public Position StartCoordinates { get; private set; }
         public Position MaxCoordinates { get; private set; }
         public Dictionary<string, IRover> RoversInPlateau { get; private set; }
-        public List<IObstacles> ObstaclesList { get; private set; }
+        public List<IObstacle> ObstaclesList { get; private set; }
 
         public const string spirit = "spirit";
         public const string opportunity = "opportunity";
@@ -20,7 +20,7 @@ namespace MarsMission
             Random random = new Random();
             StartCoordinates = new Position(0, 0);
             MaxCoordinates = maxPosition;
-            ObstaclesList = new List<IObstacles>();
+            ObstaclesList = new List<IObstacle>();
 
             //Creating two rovers and adding them in Plateau
             RoversInPlateau = new Dictionary<string, IRover>
@@ -30,7 +30,7 @@ namespace MarsMission
                 };
 
             //Adding Obstacle at random position in grid
-            ObstaclesList = new List<IObstacles>
+            ObstaclesList = new List<IObstacle>
             {
                 { //new Obstacle(alien, new Position(random.Next(0, maxPosition.X),random.Next(0, maxPosition.Y)))
                   new Obstacle(alien, new Position(1,1))

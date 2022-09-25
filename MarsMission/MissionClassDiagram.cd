@@ -26,7 +26,7 @@
   <Class Name="MarsMission.MarsRover" BaseTypeListCollapsed="true">
     <Position X="4.75" Y="4" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>BAIAAAAAAIAAAAACAAAAAAAAAAIEAgAAAgAAAAAAABA=</HashCode>
+      <HashCode>BAAAAAAAAIAIAACAAABAAAAAAAIAAgAAAgAAAAAAABA=</HashCode>
       <FileName>MarsRover.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -38,6 +38,13 @@
       <FileName>MissionControl.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="MarsMission.ChangeFocus">
+    <Position X="13.75" Y="1.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChangeFocus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="MarsMission.IPlateau">
     <Position X="1.75" Y="0.75" Width="2.75" />
     <TypeIdentifier>
@@ -45,17 +52,17 @@
       <FileName>IPlateau.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="MarsMission.IObstacles">
+  <Interface Name="MarsMission.IObstacle">
     <Position X="7.75" Y="0.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAgAAAAAAAAAAAAA=</HashCode>
-      <FileName>IObstacles.cs</FileName>
+      <FileName>IObstacle.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MarsMission.IRover">
     <Position X="4.75" Y="0.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>BAAAAAAAAIAAAAACAAAAAAAAAAIAAgAAAgAAAAAAABA=</HashCode>
+      <HashCode>BAAAAAAAAIAAAACAAAAAAAAAAAIAAgAAAgAAAAAAABA=</HashCode>
       <FileName>IRover.cs</FileName>
     </TypeIdentifier>
   </Interface>
