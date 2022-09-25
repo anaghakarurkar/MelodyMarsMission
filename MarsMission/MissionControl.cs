@@ -33,7 +33,6 @@ namespace MarsMission
             ChosenPlateau.RoversInPlateau[name].SetLocationAndDirection(position, direction);
 
         }
-
         public bool CheckRoverPositionValidity(Position position)
         {
             int maxX = ChosenPlateau.MaxCoordinates.X;
@@ -82,9 +81,8 @@ namespace MarsMission
             if (CheckForMessageValidity(message) == false)
                 return message + " is invalid message";
             
-            finalPath = ChosenPlateau.RoversInPlateau[name].Move(message);
+            finalPath = ChosenPlateau.RoversInPlateau[name].Move(message,ChosenPlateau.MaxCoordinates);
             return finalPath;
         }
-
     }
 }

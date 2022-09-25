@@ -7,6 +7,7 @@ namespace MarsMission
 {
     internal class MarsRover : IRover
     {
+        // To track rover's location  
         public Position CurrentPosition { get; private set; }
         public Position FinalPosition { get; private set; }
         public string PathString { get; private set; }
@@ -33,23 +34,27 @@ namespace MarsMission
             return "";
         }
 
-        private Position Move(Focus direction, Position lastPosition)
+        private Position Move(Focus direction, Position lastPosition, Position maxGridSize)
         {
-            switch(direction)
+            //Check if next location is
+            //1. Obstacle like another rover or alien
+            //2. Check if next move is out of the grid
+            switch (direction)
             {
                 case Focus.E:
-                    lastPosition.X += 1;
+                    lastPosition.X = (lastPosition.X != maxGridSize.X) ? lastPosition.X += 1 : lastPosition.X;
                     break;
                 case Focus.W:
-                    lastPosition.X -= 1;
+                    lastPosition.X = (lastPosition.X != 0) ? lastPosition.X -= 1 : lastPosition.X;
                     break;
                 case Focus.N:
-                    lastPosition.Y += 1;
+                    lastPosition.Y = (lastPosition.Y != maxGridSize.Y) ? lastPosition.Y += 1 : lastPosition.Y;
                     break;
                 case Focus.S:
-                    lastPosition.Y -= 1;
+                    lastPosition.Y = (lastPosition.Y != 0) ? lastPosition.Y -= 1 : lastPosition.Y;
                     break;
             }
+
             // return updated position
             return lastPosition;
         }
@@ -58,7 +63,7 @@ namespace MarsMission
         /* Moves rover according to instructions provided.
         It returns final co-ordinates with its direction.
         In case of Obstacle, it returns error message*/
-        public string Move(string instructions)
+        public string Move(string instructions, Position maxGridSize)
         {
             //Add logic to see if 
             foreach (char step in instructions.ToCharArray())
@@ -70,7 +75,7 @@ namespace MarsMission
                         CurrentFocus = NewDirection.GetDirection(CurrentFocus, step);
                         break;
                     case 'M':
-                        CurrentPosition = Move(CurrentFocus,CurrentPosition);
+                        CurrentPosition = Move(CurrentFocus, CurrentPosition, maxGridSize);
                         break;
                 }
 

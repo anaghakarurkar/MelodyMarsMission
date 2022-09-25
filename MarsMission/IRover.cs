@@ -13,7 +13,7 @@ namespace MarsMission
         bool IsLandedOnPlateau { get; }
         Focus CurrentFocus { get; set; }
 
-        string Move(string instructions);
+        string Move(string instructions,Position maxGridSize);
         void CheckForObstacles();
         void SetLocationAndDirection(Position position, Focus direction);
     }
