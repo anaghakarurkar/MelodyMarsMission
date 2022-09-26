@@ -74,10 +74,7 @@ public class MissionControlTests
     }
     [TestCase("spirit")]
     [TestCase("opportunity")]
-    [TestCase("something")]
     [TestCase("sPirit")]
-    [TestCase("")]
-    [TestCase(null)]
     [Description("Rover name should be valid")]
     public void Check_If_Rover_Name_Valid(string name)
     {
@@ -85,16 +82,38 @@ public class MissionControlTests
         Assert.That(result, Is.EqualTo(true));
     }
 
-    [TestCase("MLLRMRMLLRlrm")]
-    [TestCase("LS")]
     [TestCase("")]
     [TestCase(null)]
+    [TestCase("something")]
+    [Description("Test to check if rover name is invalid")]
+    public void Should_Return_false_If_Rover_Name_Invalid(string name)
+    {
+        bool result = _missionControl.CheckRoverExists(name);
+        Assert.That(result, Is.EqualTo(false));
+    }
+
+
+
+    [TestCase("MLLRMRMLLRlrm")]
     [Description("Message should be in correct format")]
     public void Check_If_Message_Is_In_Correct_Format(string message)
     {
         bool result = MissionControl.CheckForMessageValidity(message);
         Assert.That(result, Is.EqualTo(true));
     }
+
+    [TestCase("")]
+    [TestCase(null)]
+    [TestCase("LS")]
+    [Description("Test to check if message is in incorrect format")]
+    public void Should_Return_False_If_Messae_Is_In_Incorrect_Format(string message)
+    {
+        bool result = MissionControl.CheckForMessageValidity(message);
+        Assert.That(result, Is.EqualTo(false));
+    }
+
+
+
 
     [TestCase("spirit", "LMLMLMLMM", 1, 2, Focus.N, "1 3 N")]
     [TestCase("opportunity", "MMRMMRMRRM", 3, 3, Focus.E, "5 1 E")]
@@ -122,9 +141,9 @@ public class MissionControlTests
         result.Should().Be(expectedOutput);
     }
 
-    [TestCase(3, 4, Focus.E, "MM", "5 4 E")]
-    [Description("Obstacle found while moving")]
-    public void Test_Fails_In_Case_Of_Obstacle_Found_While_Moving(int x, int y, Focus focus, string instructions, string expectedOutput)
+    [TestCase(3, 4, Focus.E, "MM", "3 4 E")]
+    [Description("Rover should not move if obstacle found")]
+    public void Rover_Should_Not_Move_If_Obstacle_Found_While_Moving(int x, int y, Focus focus, string instructions, string expectedOutput)
     {
         string roverName = "spirit";
         _missionControl.LandRoverOnLocation(roverName, new Position(x, y), focus);
