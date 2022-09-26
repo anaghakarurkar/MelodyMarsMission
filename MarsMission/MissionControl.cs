@@ -92,7 +92,6 @@ namespace MarsMission
             if (CheckForMessageValidity(message) == false)
                 return message + " is invalid message";
             finalPath = ChosenPlateau.RoversInPlateau[name].Move(message, ChosenPlateau.MaxCoordinates, CheckForObstacles);
-            Console.WriteLine(finalPath);
             return finalPath;
         }
     }
